@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlexLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APSmartHome.Views.HomePageItem"
+            WidthRequest="90" HeightRequest="110"
+            Direction="Column" AlignContent="Center">
+
+    <ImageButton
+        BorderColor="#fff"
+        BorderWidth="1"
+        BackgroundColor="#4D000000"
+        HeightRequest="90" 
+        CornerRadius="45"
+        Clicked="ImageButton_Clicked"
+        Source="{Binding Icon}">
+    </ImageButton>
+
+    <!--<Button BorderColor="#fff"
+            BorderWidth="1"
+            BackgroundColor="#4D000000"
+
+            HeightRequest="90" CornerRadius="45"
+            Clicked="OpenUrl_ClickedAsync"
+            Image="{Binding Icon}"/>-->
+
+    <Label Text="{Binding Text}" 
+            Margin="0,4,0,0"
+            HeightRequest="20"
+            FontSize="Small"
+            HorizontalTextAlignment="Center" 
+            HorizontalOptions="CenterAndExpand"/>
+
+</FlexLayout>

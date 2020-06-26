@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APSmartHome.Views.Settings.BasicSettingPage"
+             xmlns:vm="clr-namespace:APSmartHome.ViewModels.Settings">
+
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel></vm:SettingsViewModel>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="20,10,20,10" Spacing="10">
+
+            <StackLayout Orientation="Horizontal">
+                <CheckBox HorizontalOptions="Start"
+                          VerticalOptions="CenterAndExpand"
+                          CheckedChanged="CheckBox_CheckedChanged"
+                          IsChecked="{Binding OverInternet}">
+                </CheckBox>
+                
+                <Label Text="Over Internet"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Entry  Text="{Binding LocalIPAddress}"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"></Entry>
+
+                <Label Text="Local IP Address"
+                       HorizontalOptions="End"
+                       VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <Entry  Text="{Binding ApiKey}"
+                        IsPassword="True"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand"></Entry>
+
+                <Label Text="Api Key"
+                       HorizontalOptions="End"
+                       VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Change"
+                        HorizontalOptions="Start"
+                        VerticalOptions="CenterAndExpand"></Button>
+
+                <Label Text="Change Current Password"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+
+            <Button Text="Save"
+                    HorizontalOptions="CenterAndExpand"
+                    Command="{Binding ISaveAction}"></Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

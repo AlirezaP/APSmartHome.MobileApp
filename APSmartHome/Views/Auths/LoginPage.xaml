@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APSmartHome.Views.Auths.LoginPage"
+             BackgroundColor="white"
+             xmlns:vm="clr-namespace:APSmartHome.ViewModels.Auths"
+             xmlns:ffImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,5" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <ffImage:CachedImage VerticalOptions="Center" HeightRequest="128" >
+                        <ffImage:CachedImage.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="Android,iOS" Value="IoTSafetySecurity" />
+                                <On Platform="UWP" Value="Images/IoTSafetySecurity.png" />
+                            </OnPlatform>
+                        </ffImage:CachedImage.Source>
+                    </ffImage:CachedImage>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16,10,16,40" Spacing="10">
+
+                <Entry HorizontalOptions="FillAndExpand"
+                       IsPassword="True"
+                       Text="{Binding Pass}"
+                       Placeholder="کلمه عبور"
+                       PlaceholderColor="Gray"
+                       HorizontalTextAlignment="Center"
+                       Margin="10,10,10,10"></Entry>
+                
+                <Button Margin="0,10,0,0" Text="ورود"
+                        Command="{Binding LoginUser}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+
+
+                <ImageButton HorizontalOptions="CenterAndExpand"
+                             Source="BioAuth1.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="128"
+                             Margin="0,10,0,10"
+                             Command="{Binding BioLoginUser}">
+                    <ImageButton.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android,iOS" Value="BioAuth1" />
+                            <On Platform="UWP" Value="Images/BioAuth1.png" />
+                        </OnPlatform>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+    
+    
+</ContentPage>

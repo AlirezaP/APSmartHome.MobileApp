@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APSmartHome.Views.Home.ParkingPage"
+             xmlns:vm="clr-namespace:APSmartHome.ViewModels.Home"
+             xmlns:ffImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    
+    <ContentPage.BindingContext>
+        <vm:ParkingViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Orange" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image VerticalOptions="Center" HeightRequest="128" >
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="Android,iOS" Value="Parking1" />
+                                <On Platform="UWP" Value="Images/Parking1.png" />
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Door State" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" " />
+                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Margin="0,10,0,0" Text="Trigger Door"
+                        Command="{Binding TriggerDoor}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+
+
+                <ffImage:CachedImage
+                        HorizontalOptions="CenterAndExpand"
+                        HeightRequest="128"
+                       IsVisible="{Binding TriggerTimerVisibility}">
+                    <ffImage:CachedImage.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android,iOS" Value="wifiGif1.gif" />
+                            <On Platform="UWP" Value="Images/wifiGif1.gif" />
+                        </OnPlatform>
+                    </ffImage:CachedImage.Source>
+                </ffImage:CachedImage>
+                
+                <!--<Image BackgroundColor="Transparent"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"
+                       HeightRequest="128"
+                       IsAnimationPlaying="True"
+                       IsVisible="{Binding TriggerTimerVisibility}">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android,iOS" Value="wifiGif1.gif" />
+                            <On Platform="UWP" Value="Images/wifiGif1.gif" />
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>-->
+                
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
